@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="xf03notesSql.NoteEntryPage" Appearing="ContentPage_Appearing">
+  <ContentPage.Resources>
+    <Style TargetType="{x:Type Editor}">
+      <Setter
+        Property="BackgroundColor"
+        Value="{StaticResource AppBgColor}"/>
+    </Style>
+
+    <Style TargetType="Button"
+           ApplyToDerivedTypes="True"
+           CanCascade="True">
+      <Setter Property="FontSize"
+              Value="Medium"/>
+      <Setter Property="BackgroundColor"
+              Value="#1976D2"/>
+      <Setter Property="TextColor" Value="White"/>
+      <Setter Property="CornerRadius" Value="5"/>
+    </Style>
+  </ContentPage.Resources>
+
+  <ContentPage.Content>
+    <StackLayout Margin="{StaticResource PageMargin}">
+      <Grid VerticalOptions="Start">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="btnSaveEdit"
+          Text="Save" 
+          Clicked="btnSaveClick"/>
+        <Button 
+          Grid.Column="1" 
+          Text="Delete" 
+          Clicked="btnDeleteClick"/>
+      </Grid>
+      <Editor x:Name="edNote"
+        Placeholder="Enter your note"
+        Text="{Binding Text}"
+        VerticalOptions="FillAndExpand"
+        IsVisible="true"/>
+      <WebView x:Name="wvMarkdown"
+          VerticalOptions="FillAndExpand" 
+          HorizontalOptions="FillAndExpand"
+          IsVisible="false"/>
+    </StackLayout>
+  </ContentPage.Content>
+</ContentPage>

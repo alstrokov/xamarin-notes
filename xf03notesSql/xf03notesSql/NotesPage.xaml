@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="xf03notesSql.NotesPage">
+  <ContentPage.Resources>
+    <Style TargetType="{x:Type ListView}">
+      <Setter Property="BackgroundColor"
+              Value="{StaticResource AppBgColor}"/>
+    </Style>
+  </ContentPage.Resources>
+  
+  
+  <ContentPage.ToolbarItems>
+    <ToolbarItem 
+            Text="Add new note"
+            Clicked="ToolbarItem_Clicked"/>
+  </ContentPage.ToolbarItems>
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="Auto"/>
+      </Grid.ColumnDefinitions>
+
+      <Editor 
+      x:Name ="edFilter"
+      Placeholder="Filtrate" 
+      TextChanged="Editor_TextChanged"/>
+
+      <Button Text="Clear" Grid.Column="1" Clicked="btnClear_clicked"/>
+    </Grid>
+    
+
+    <ListView Grid.Row="1"
+        x:Name="lvNotes"
+        Margin="{StaticResource PageMargin}"
+        ItemSelected="lvNotes_ItemSelected">
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <TextCell
+          Text="{Binding Text}"
+          TextColor="Black"
+          Detail="{Binding Date, StringFormat='{}{0:dd.MM.yyyy HH:mm}'}"/>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </ListView>
+    
+  </Grid>
+
+
+</ContentPage>
