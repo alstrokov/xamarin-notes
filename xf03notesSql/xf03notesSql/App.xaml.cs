@@ -2,7 +2,6 @@
 using System.IO;
 using Xamarin.Forms;
 using xf03notesSql.Data;
-using xf03notesSql.Models;
 
 namespace xf03notesSql
 {
