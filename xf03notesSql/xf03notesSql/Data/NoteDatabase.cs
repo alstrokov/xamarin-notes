@@ -30,7 +30,7 @@ namespace xf03notesSql.Data
         .FirstOrDefaultAsync();
     }
 
-    internal Task SaveNoteAsync(Note note)
+    public Task SaveNoteAsync(Note note)
     {
       if(note.ID != 0)
       {
@@ -45,6 +45,15 @@ namespace xf03notesSql.Data
     public Task<int> DeleteNoteAsync(Note note)
     {
       return _db.DeleteAsync(note);
+    }
+
+    public void close()
+    {
+      //_db.GetConnection().Close();
+      //_db.GetConnection().Dispose();
+
+      //GC.Collect();
+      //GC.WaitForPendingFinalizers();
     }
   }
 }
